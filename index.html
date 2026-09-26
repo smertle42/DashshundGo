@@ -1,36 +1,1032 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-   <link rel="stylesheet" href="assets/css/index.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WOOF — учи языки</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root { --cream: #F4F0E8;
+     --black: #171717;
+      --white: #FFFFFF;
+       --yellow: #FFD84D;
+        --red: #FF6847;
+        --green: #B9DDB5;
+         --gray: #77736C;
+}S
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1380px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.menu {
+    display: flex;
+    gap: 34px;
+}
+
+.menu a {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.menu a:hover {
+    opacity: .5;
+}
+
+.header-button {
+    padding: 14px 22px;
+    background: var(--black);
+    color: white;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.header-button:hover {
+    background: var(--red);
+    transform: translateY(-2px);
+}
+
+
+
+.hero {
+    min-height: 760px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-left {
+    padding: 80px 0;
+}
+
+.eyebrow {
+    display: inline-flex;
+    padding: 9px 15px;
+    background: var(--yellow);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    max-width: 900px;
+    margin: 0;
+    font-size: clamp(64px, 9vw, 138px);
+    line-height: .83;
+    letter-spacing: -8px;
+    font-weight: 800;
+}
+
+.hero h1 .red {
+    color: var(--red);
+}
+
+.hero-description {
+    max-width: 480px;
+    margin-top: 45px;
+    font-size: 21px;
+    line-height: 1.35;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.button {
+    display: inline-flex;
+    min-height: 56px;
+    padding: 0 27px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    background: var(--black);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button.yellow {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+
+.hero-dog {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--yellow);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.hero-dog::before {
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background: #FFE98B;
+}
+
+.dog {
+    position: relative;
+
+    width: 310px;
+
+    z-index: 2;
+
+    animation: dogFloat 4s ease-in-out infinite;
+}
+
+
+
+.dog img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 18px 20px rgba(0,0,0,.12));
+}
+
+@keyframes dogFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(2deg);
+    }
+}
+
+.dog-caption {
+    position: absolute;
+
+    left: 30px;
+    bottom: 28px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    z-index: 5;
+}
+
+
+
+.marquee {
+    overflow: hidden;
+    margin: 30px 0 100px;
+    background: var(--black);
+    color: white;
+    border-radius: var(--radius);
+}
+
+.marquee-track {
+    width: max-content;
+    display: flex;
+    gap: 45px;
+    padding: 19px 0;
+    animation: marquee 22s linear infinite;
+}
+
+.marquee span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+.section {
+    padding: 120px 0;
+}
+
+.section-label {
+    margin-bottom: 25px;
+    color: var(--gray);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.big-title {
+    max-width: 1000px;
+    margin: 0;
+    font-size: clamp(48px, 6vw, 92px);
+    line-height: .92;
+    letter-spacing: -5px;
+}
+
+
+
+.languages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 70px;
+}
+
+.language {
+    min-height: 430px;
+    padding: 32px;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.language:hover {
+    transform: translateY(-7px);
+}
+
+.language:nth-child(1) {
+    background: var(--yellow);
+}
+
+.language:nth-child(2) {
+    background: var(--red);
+    color: white;
+}
+
+.language:nth-child(3) {
+    background: var(--green);
+}
+
+.language-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.language-number {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: .55;
+}
+
+.flag {
+    font-size: 28px;
+}
+
+.language h3 {
+    margin: 0;
+    font-size: 52px;
+    line-height: .9;
+    letter-spacing: -3px;
+}
+
+.language p {
+    max-width: 330px;
+    margin: 20px 0 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+
+
+.process {
+    margin-top: 70px;
+    border-top: 1px solid #BDB8AE;
+}
+
+.step {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    gap: 30px;
+    padding: 35px 0;
+    border-bottom: 1px solid #BDB8AE;
+    align-items: start;
+}
+
+.step-number {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.step h3 {
+    margin: 0;
+    font-size: 35px;
+    letter-spacing: -1.5px;
+}
+
+.step p {
+    max-width: 430px;
+    margin: 0;
+    color: var(--gray);
+    font-size: 17px;
+    line-height: 1.45;
+}
+
+
+
+.character {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 20px;
+}
+
+.character-image {
+    min-height: 600px;
+    border-radius: var(--radius);
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.character-image img {
+    width: 65%;
+    height: auto;
+
+    object-fit: contain;
+
+    animation: dogFloat 4s ease-in-out infinite;
+
+    filter: drop-shadow(0 18px 20px rgba(0,0,0,.15));
+}
+
+.character-text {
+    min-height: 600px;
+    padding: 60px;
+    border-radius: var(--radius);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.character-text h2 {
+    max-width: 700px;
+    margin: 0;
+    font-size: clamp(45px, 5vw, 80px);
+    line-height: .9;
+    letter-spacing: -4px;
+}
+
+.character-text p {
+    max-width: 480px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--gray);
+}
+
+
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 70px;
+}
+
+.stat {
+    padding-top: 30px;
+    border-top: 1px solid #BDB8AE;
+}
+
+.stat-number {
+    font-size: clamp(60px, 7vw, 100px);
+    font-weight: 800;
+    letter-spacing: -5px;
+    line-height: 1;
+}
+
+.stat-title {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stat p {
+    max-width: 300px;
+    color: var(--gray);
+    line-height: 1.4;
+}
+
+
+
+.cta {
+    margin: 80px 0 30px;
+    padding: 90px 60px;
+    border-radius: 40px;
+    background: var(--black);
+    color: white;
+}
+
+.cta h2 {
+    max-width: 950px;
+    margin: 0 0 50px;
+    font-size: clamp(55px, 7vw, 105px);
+    line-height: .87;
+    letter-spacing: -6px;
+}
+
+.cta .button {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    color: var(--gray);
+    font-size: 13px;
+}
+
+
+
+@media (max-width: 800px) {
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    header {
+        height: 80px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .hero {
+        display: block;
+        min-height: auto;
+    }
+
+    .hero-left {
+        padding: 70px 0 40px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+        letter-spacing: -4px;
+    }
+
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .hero-dog {
+        min-height: 480px;
+        border-radius: 28px;
+    }
+
+    .dog {
+        width: 230px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .big-title {
+        letter-spacing: -3px;
+    }
+
+    .languages {
+        grid-template-columns: 1fr;
+        margin-top: 45px;
+    }
+
+    .language {
+        min-height: 330px;
+    }
+
+    .step {
+        grid-template-columns: 50px 1fr;
+        gap: 10px;
+    }
+
+    .step p {
+        grid-column: 2;
+    }
+
+    .character {
+        grid-template-columns: 1fr;
+    }
+
+    .character-image,
+    .character-text {
+        min-height: 430px;
+    }
+
+    .character-image img {
+        width: 70%;
+    }
+
+    .character-text {
+        padding: 35px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .cta {
+        padding: 50px 28px;
+        border-radius: 28px;
+    }
+
+    .cta h2 {
+        letter-spacing: -3px;
+    }
+
+    footer {
+        display: block;
+        line-height: 2;
+    }
+}
+</style>
 </head>
+
+
 <body>
-    
-    <nav class="navbar navbar-expand-lg overlay navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">DuchchundGo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
-                </li>
-            </ul>
+
+<div class="container">
+
+
+
+<header>
+
+    <div class="logo">
+        W<span>OOF</span>!
+    </div>
+
+    <nav class="menu">
+        <a href="#languages">Языки</a>
+        <a href="#how">Как учиться</a>
+        <a href="#about">О школе</a>
+    </nav>
+
+    <a class="header-button" href="#start">
+        Начать
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <div class="eyebrow">
+            Языки без скуки 🐾
+        </div>
+
+        <h1>
+            Учи язык.
+            <span class="red">Гав!</span>
+        </h1>
+
+        <p class="hero-description">
+            Английский, испанский и другие языки —
+            короткими уроками, живыми фразами
+            и с одним очень разговорчивым чихуахуа.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a class="button" href="#languages">
+                Выбрать язык →
+            </a>
+
+            <a class="button yellow" href="#how">
+                Как это работает
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ЧИХУАХУА -->
+
+    <div class="hero-dog">
+
+        <div class="dog">
+
+            <img
+                src="чихуахуа1.jpg"
+                alt="Чихуахуа Chico"
+            >
+
+        </div>
+
+        <div class="dog-caption">
+            Meet Chico — твой языковой напарник
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>HELLO</span>
+        <span>HOLA</span>
+        <span>BONJOUR</span>
+        <span>CIAO</span>
+        <span>GUTEN TAG</span>
+        <span>ПРИВЕТ</span>
+
+        <span>HELLO</span>
+        <span>HOLA</span>
+        <span>BONJOUR</span>
+        <span>CIAO</span>
+        <span>GUTEN TAG</span>
+        <span>ПРИВЕТ</span>
+
+    </div>
+
+</div>
+
+
+
+
+<section class="section" id="languages">
+
+    <div class="section-label">
+        01 / ВЫБЕРИ ЯЗЫК
+    </div>
+
+    <h2 class="big-title">
+        Начни с языка,
+        который хочется говорить.
+    </h2>
+
+    <div class="languages">
+
+        <div class="language">
+
+            <div class="language-top">
+                <span class="language-number">01</span>
+                <span class="flag">🇬🇧</span>
             </div>
+
+            <div>
+                <h3>English</h3>
+
+                <p>
+                    Для путешествий, работы,
+                    фильмов и разговоров
+                    без постоянного перевода.
+                </p>
+            </div>
+
         </div>
-        </nav>
+
+
+        <div class="language">
+
+            <div class="language-top">
+                <span class="language-number">02</span>
+                <span class="flag">🇪🇸</span>
+            </div>
+
+            <div>
+                <h3>Español</h3>
+
+                <p>
+                    Учим говорить естественно:
+                    hola, ¿qué tal? и дальше
+                    намного интереснее.
+                </p>
+            </div>
+
         </div>
-        <div class="welcome">
-            <h1>Привет</h1>
+
+
+        <div class="language">
+
+            <div class="language-top">
+                <span class="language-number">03</span>
+                <span class="flag">🇫🇷</span>
+            </div>
+
+            <div>
+                <h3>Français</h3>
+
+                <p>
+                    Красивый язык,
+                    живые выражения
+                    и немного французского шарма.
+                </p>
+            </div>
+
         </div>
-    <script src="assets/js/bootstrap.js"></script>
+
+    </div>
+
+</section>
+
+
+
+
+<section class="section" id="how">
+
+    <div class="section-label">
+        02 / КАК ЭТО РАБОТАЕТ
+    </div>
+
+    <h2 class="big-title">
+        15 минут в день.
+        Никаких скучных учебников.
+    </h2>
+
+    <div class="process">
+
+        <div class="step">
+
+            <div class="step-number">01</div>
+
+            <h3>Выбираешь урок</h3>
+
+            <p>
+                Ситуация из реальной жизни:
+                аэропорт, кафе, работа,
+                путешествие или обычный разговор.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">02</div>
+
+            <h3>Учишь живые фразы</h3>
+
+            <p>
+                Не «the pen is on the table»,
+                а то, что действительно
+                пригодится в разговоре.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">03</div>
+
+            <h3>Говоришь вместе с Chico</h3>
+
+            <p>
+                Чихуахуа слушает,
+                подсказывает и иногда
+                совершенно бессовестно исправляет.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">04</div>
+
+            <h3>Повторяешь</h3>
+
+            <p>
+                Уроки возвращаются в нужный момент,
+                чтобы новые слова действительно
+                остались в памяти.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="about">
+
+    <div class="section-label">
+        03 / НАШ МАСКОТ
+    </div>
+
+    <div class="character">
+
+        <div class="character-image">
+
+            <img
+                src="5312232370691842696.jpg"
+                alt="Чихуахуа Chico"
+            >
+
+        </div>
+
+
+        <div class="character-text">
+
+            <div>
+
+                <h2>
+                    Chico знает
+                    4 языка.
+                </h2>
+
+            </div>
+
+            <p>
+                Он появился, когда мы поняли:
+                изучать язык намного веселее,
+                когда рядом есть тот,
+                кто совершенно не боится
+                ошибаться.
+                <br><br>
+                Chico не идеален.
+                И ты тоже не обязан быть.
+                Главное — говорить.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="section">
+
+    <div class="section-label">
+        04 / В ЦИФРАХ
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-number">
+                15
+            </div>
+
+            <div class="stat-title">
+                минут в день
+            </div>
+
+            <p>
+                Достаточно небольшого
+                ежедневного шага.
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                4
+            </div>
+
+            <div class="stat-title">
+                языка
+            </div>
+
+            <p>
+                Выбирай тот,
+                который сейчас нужен.
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                0
+            </div>
+
+            <div class="stat-title">
+                скучных уроков
+            </div>
+
+            <p>
+                По крайней мере,
+                мы очень старались.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta" id="start">
+
+    <h2>
+        Готов сказать
+        первое «Hello»?
+    </h2>
+
+    <a class="button" href="#">
+        Начать учиться →
+    </a>
+
+</section>
+
+
+<footer>
+
+    <div>
+        WOOF! LANGUAGE © 2026
+    </div>
+
+    <div>
+        Учим говорить, а не зубрить 🐕
+    </div>
+
+</footer>
+
+</div>
+
 </body>
 </html>
